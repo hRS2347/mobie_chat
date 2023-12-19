@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/methodsFragment"
-        android:name="com.example.mobilechat.chat.method_page.MethodsFragment"
+        android:name="com.example.mobilechat.main.method_page.MethodsFragment"
         android:label="fragment_method"
         tools:layout="@layout/fragment_method" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.mobilechat.chat.history_page.HistoryFragment"
+        android:name="com.example.mobilechat.main.history_page.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history">
         <action
@@ -41,11 +41,14 @@
         <action
             android:id="@+id/action_historyFragment_to_managerFragment"
             app:destination="@id/managerFragment" />
+        <action
+            android:id="@+id/action_historyFragment_to_recordFragment"
+            app:destination="@id/recordFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.example.mobilechat.chat.chat_page.ChatFragment"
+        android:name="com.example.mobilechat.main.chat_page.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
@@ -56,7 +59,6 @@
         <action
             android:id="@+id/action_loginFragment_to_historyFragment"
             app:destination="@id/historyFragment"
-            app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
@@ -73,4 +75,9 @@
         android:name="com.example.mobilechat.manager.add_page.AddFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_add" />
+    <fragment
+        android:id="@+id/recordFragment"
+        android:name="com.example.mobilechat.main.record_page.RecordFragment"
+        android:label="fragment_record"
+        tools:layout="@layout/fragment_record" />
 </navigation>

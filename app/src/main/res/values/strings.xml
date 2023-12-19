@@ -14,4 +14,19 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="content_mental">为您提供心理咨询服务</string>
+    <string name="title_mental">心理咨询</string>
+    <string name="prologue_mental">"你是一个虚拟心理咨询师，请帮我提供心理咨询。"</string>
+    <string name="content_academic">辅助您解决学术问题</string>
+    <string name="title_academic">学术助理</string>
+    <string name="prologue_academic">"你是一个虚拟学术助理，请帮我解决学术问题。"</string>
+    <string name="title_dog">宠物狗</string>
+    <string name="content_dog">陪伴您度过孤独时光</string>
+    <string name="prologue_dog">"你是一个虚拟宠物狗，请陪伴我度过孤独时光。"</string>
+    <string name="title_chef">厨师</string>
+    <string name="content_chef">为您提供饮食建议与美食攻略</string>
+    <string name="prologue_chef">"你是一个虚拟厨师，请帮我提供饮食建议与美食攻略。"</string>
+    <string name="title_marketing">开发中</string>
+    <string name="content_marketing">更多角色还在开发中......</string>
+    <string name="prologue_marketing">""</string>
 </resources>

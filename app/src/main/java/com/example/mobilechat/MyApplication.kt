@@ -1,8 +1,10 @@
 package com.example.mobilechat
 
 import android.app.Application
-import com.example.mobilechat.chat.history_page.HistoryBean
+import com.example.mobilechat.main.history_page.HistoryBean
 import com.example.mobilechat.db.share.ShareHelper
+import kotlinx.coroutines.newSingleThreadContext
+import java.util.concurrent.Executor
 
 class MyApplication:Application() {
     companion object{
@@ -14,6 +16,10 @@ class MyApplication:Application() {
     var hBean : HistoryBean? = null
     var context = this
     var isManager = false
+    var prologue = ""
+    var user = ""
+    var pwd = ""
+    var uid = ""
 
     override fun onCreate() {
         super.onCreate()

@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
 import com.example.mobilechat.databinding.FragmentAddBinding
-import com.example.mobilechat.network.ServerConnector
+import com.example.mobilechat.utils.network.ServerConnector
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
@@ -23,6 +24,7 @@ class AddFragment : Fragment() {
 
     private lateinit var handler: Handler
     private lateinit var binding: FragmentAddBinding
+    private val role = MutableLiveData<Double>(1.0)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,16 +45,49 @@ class AddFragment : Fragment() {
         binding.btnCancel.setOnClickListener {
             Navigation.findNavController(it).navigateUp()
         }
+        binding.roleUp.setOnClickListener {
+            role.value = role.value?.plus(1)
+        }
+        binding.roleDown.setOnClickListener {
+            role.value = role.value?.minus(1)
+        }
         binding.btnConfirm.setOnClickListener {
             val name = binding.etName.text.toString()
             val pwd = binding.etPwd.text.toString()
-            val pm = binding.etPm.text.toString().toDouble()
+            val pm = when(binding.tvRole.text.toString()){
+                "管理员" -> 2.0
+                "普通用户" -> 1.0
+                else -> 0.0
+            }
             if (name.isEmpty() || pwd.isEmpty() || (pm !in 0.0..2.0)) {
                 Toast.makeText(context, "信息存在错误", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             addUser(name, pwd, pm)
         }
+
+        role.observe(viewLifecycleOwner) {
+            binding.tvRole.text = when (it) {
+                0.0 -> "封禁用户"
+                1.0 -> "普通用户"
+                2.0 -> "管理员"
+                else -> "未知"
+            }
+            binding.ivRole.setImageResource(
+                when (it) {
+                    0.0 -> com.example.mobilechat.R.drawable.danger
+                    1.0 -> com.example.mobilechat.R.drawable.user
+                    2.0 -> com.example.mobilechat.R.drawable.police
+                    else -> com.example.mobilechat.R.drawable.zeus
+                }
+            )
+            binding.roleUp.isEnabled = it < 2.0
+            binding.roleDown.isEnabled = it > 0.0
+        }
+
+
+
+
         return binding.root
     }
 
